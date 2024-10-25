@@ -784,14 +784,15 @@ CREATE PROCEDURE AddProductWithCategory(
     IN p_Quantity INT,
     IN p_Price DECIMAL(10, 2),
     IN p_Super_Category VARCHAR(255),
-    IN p_Category_Name VARCHAR(255)
+    IN p_Category_Name VARCHAR(255),
+    IN p_Image VARCHAR(255)  -- New parameter for image link
 )
 BEGIN
     DECLARE last_id INT;
     DECLARE cat_id INT;
 
-    -- Insert into Products table
-    INSERT INTO Products (Product_Name, Price) VALUES (p_Product_Name, p_Price);
+    -- Insert into Products table with image link
+    INSERT INTO Products (Product_Name, Price, Image) VALUES (p_Product_Name, p_Price, p_Image);
     -- Get the last inserted Product_ID
     SET last_id = LAST_INSERT_ID();
 
@@ -818,6 +819,483 @@ BEGIN
 
     -- Insert into Inventory table
     INSERT INTO Inventory (Product_ID, Stock_Level, DateChanged) VALUES (last_id, p_Quantity, NOW());
+END //
+
+DELIMITER ;
+
+DELIMITER ;
+
+ALTER TABLE Products
+ADD COLUMN image VARCHAR(250);
+
+UPDATE Products
+SET image = "https://pngimg.com/d/iphone_12_PNG36.png"
+WHERE product_id = 1;
+
+UPDATE Products
+SET image = " https://purepng.com/public/uploads/large/samsung-galaxy-s10-prism-front-6bx.png"
+WHERE product_id = 2;
+
+ UPDATE Products set IMAGE="https://www.pngarts.com/files/11/Android-Google-Pixel-Phone-PNG-Image-Background.png"
+WHERE PRODUCT_ID=3;
+
+UPDATE Products set IMAGE="https://i.pinimg.com/originals/b2/39/21/b2392123978a9779bb008b049c57fbec.png" WHERE PRODUCT_ID=4;
+
+
+UPDATE Products set IMAGE= "https://png.pngitem.com/pimgs/s/297-2978265_dell-laptop-png-images-dell-xps-15-9570.png" WHERE PRODUCT_ID=5;
+
+
+UPDATE Products set IMAGE= "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Dell_XPS_13_%282018%29.png/627px-Dell_XPS_13_%282018%29.png" WHERE PRODUCT_ID=5;
+
+
+UPDATE Products set IMAGE= "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08881381.png?impolicy=Png_Res&imwidth=270&imdensity=1" WHERE PRODUCT_ID=6;
+
+
+UPDATE Products set IMAGE= "https://www.pngfind.com/pngs/b/123-1233475_2796-pngwe-lenovo-laptop-thinkpad-l580-hero-lenovo.png" WHERE PRODUCT_ID=7;
+
+
+UPDATE Products set IMAGE= "https://in-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/c/0/c08509690_1_1_6.png" WHERE PRODUCT_ID=8;
+
+UPDATE Products set IMAGE= "https://i.dell.com/is/image/DellContent/content/dam/images/products/laptops-and-2-in-1s/inspiron/15-3505-non-touch/in3505nt-cnb-00000ff090-gr.psd?qlt=95&fit=constrain,1&hei=2122&wid=3679&fmt=png-alpha" WHERE PRODUCT_ID=9;
+
+ UPDATE Products set IMAGE= "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-2022-hero-silver-wifi-select_FMT_WHH?wid=940&hei=1112&fmt=png-alpha&.v=1664387253605" WHERE PRODUCT_ID=10;
+
+  UPDATE Products set IMAGE= "https://img.us.news.samsung.com/us/wp-content/uploads/2017/02/14162235/Galaxy-Tab-S3_001.png" WHERE PRODUCT_ID=11;
+ UPDATE Products set IMAGE= "https://5.imimg.com/data5/SELLER/Default/2021/2/BU/RS/XF/122278461/microsoft-surface-pro-7.png" WHERE PRODUCT_ID=12;
+
+ UPDATE Products set IMAGE= "https://media.croma.com/image/upload/v1697022147/Croma%20Assets/Gaming/Gaming%20Consoles/Images/265330_0_t7qy1t.png" WHERE PRODUCT_ID=13;
+
+UPDATE Products set IMAGE= "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Xbox-360-Pro-wController.png/1370px-Xbox-360-Pro-wController.png" WHERE PRODUCT_ID=14;
+
+UPDATE Products set IMAGE= "https://upload.wikimedia.org/wikipedia/commons/b/bc/Nintendo-Switch-wJoyCons-BlRd-Standing-FL.png"
+ WHERE PRODUCT_ID=15;
+
+UPDATE Products set IMAGE= "https://media.alienwarearena.com/media/2022/09/Picture1.png" WHERE PRODUCT_ID=16;
+
+ UPDATE Products set IMAGE= "https://au-files.apjonlinecdn.com/landingpages/content-pages/visid-rich-content/hp-omen-25l-desktop/images/w100_product_highlight.png" WHERE PRODUCT_ID=17;
+
+  UPDATE Products set IMAGE= "https://www.empoweredpc.com/wp-content/uploads/2024/03/Panorama_angle_aqua_1200-600x674.png" WHERE PRODUCT_ID=18;
+
+ UPDATE Products set IMAGE= "https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc-headphonearn/product_silo_image/AEM_qc-headphonearn_PDP_GALLERY_BLACK-1.png/_jcr_content/renditions/cq5dam.web.320.320.png" WHERE PRODUCT_ID=19;
+
+  UPDATE Products set IMAGE= "https://www.sony.co.in/image/f3f1e4cde7ef052790bfd64ce85f39bb?fmt=png-alpha&wid=1200" WHERE PRODUCT_ID=20;   
+
+UPDATE Products set IMAGE= "https://www.sennheiser.com/globalassets/digizuite/38361-en-hd_280_pro_product_shot_cutout_isofront.png.png/SennheiserFullWidth" WHERE PRODUCT_ID=21;
+
+
+UPDATE Products set IMAGE= "https://www.pngplay.com/wp-content/uploads/6/JBL-Audio-Speakers-Transparent-PNG.png" WHERE PRODUCT_ID=22;
+
+
+UPDATE Products set IMAGE= "https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/products/speakers/bose_portable_home_speaker/product_silo_images/bose_portable_home_speaker_black_EC_hero.psd/_jcr_content/renditions/cq5dam.web.320.320.png" WHERE PRODUCT_ID=23;
+
+
+UPDATE Products set IMAGE= "https://media.sonos.com/images/znqtjj88/production/029f523de980751d0ea6b1866e7f3b4bc806277d-2000x1362.png?w=3840&q=100&fit=clip&auto=format" WHERE PRODUCT_ID=24;           
+
+
+UPDATE Products set IMAGE= "https://www.sony-asia.com/image/60fc808004d6860e433b5a4cafeb60d2?fmt=png-alpha&resMode=bisharp&wid=384" WHERE PRODUCT_ID=25;
+
+
+UPDATE Products set IMAGE= "https://media.croma.com/image/upload/v1714043192/Croma%20Assets/Entertainment/Television/Images/303778_0_vsshc9.png" WHERE PRODUCT_ID=26;
+
+UPDATE Products set Product_Name="LG TV" WHERE Product_ID=26;
+
+
+UPDATE Products set IMAGE= "https://images.samsung.com/is/image/samsung/p6pim/in/qa55q60daulxl/gallery/in-qled-q60d-qa55q60daulxl-539976106?$650_519_PNG$" WHERE PRODUCT_ID=27;
+
+UPDATE Products set IMAGE= "https://www.otterbox.com/on/demandware.static/-/Sites-ob_us-Library/default/dwa9396fbf/2024_Files/series_tiles/defender-xt-iphd23-black-2.png" WHERE PRODUCT_ID=28;
+
+
+UPDATE Products set IMAGE= "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1686842583/Croma%20Assets/Communication/Mobile%20Accessories/Images/264143_0_iqf17f.png" WHERE PRODUCT_ID=29;
+
+
+
+UPDATE Products set IMAGE= "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1718868411/Croma%20Assets/Communication/Mobile%20Accessories/Images/305942_rzmu41.png" WHERE PRODUCT_ID=30;
+
+ update products set product_name="Portonics" where Product_ID=31;
+
+
+ UPDATE Products set IMAGE= "https://www.ravpower.com/cdn/shop/files/RP-PC151_png_1f102174-b175-4efb-975d-827321b8d62b.png?v=1697529205" WHERE PRODUCT_ID=32;
+
+
+UPDATE Products set IMAGE= "https://media.croma.com/image/upload/v1675859289/Croma%20Assets/Communication/Chargers%20and%20Batteries/Images/250442_0_q27pog.png" WHERE PRODUCT_ID=31;
+
+
+UPDATE Products set IMAGE= "https://media.croma.com/image/upload/v1689152382/Croma%20Assets/Computers%20Peripherals/Chargers%20and%20Batteries/Images/271261_0_eotlnt.png" WHERE PRODUCT_ID=33;
+
+
+UPDATE Products set IMAGE= "https://lh4.googleusercontent.com/proxy/nSOwP9HF6OP-itPHBnHJkjp26uJLX27FIqGHea-dDAvuSswxOLi0nAj21R3stJs1Cx66f_CUlL-sNcx1wude6FCDgYlEJCKC" WHERE PRODUCT_ID=34;
+
+
+UPDATE Products set IMAGE= "https://www.pngarts.com/files/9/Smartphone-Power-Bank-Transparent-Images.png" WHERE PRODUCT_ID=35;
+
+
+
+ UPDATE Products set IMAGE="https://media.croma.com/image/upload/v1703082699/Croma%20Assets/Communication/PowerBank/Images/275990_9_qwir4y.png" WHERE PRODUCT_ID=36;
+
+ UPDATE Products set IMAGE="https://cdn.shopify.com/s/files/1/0765/2137/3999/products/A8843011-Anker_762_USB-C_to_Lightning_Cable_3ft_6ft_Nylon_1.png?v=1683859277" WHERE PRODUCT_ID=37;
+
+ UPDATE Products set IMAGE="https://cdn.shopify.com/s/files/1/0765/2137/3999/products/A8843011-Anker_762_USB-C_to_Lightning_Cable_3ft_6ft_Nylon_1.png?v=1683859277" WHERE PRODUCT_ID=37;
+
+
+ UPDATE Products set IMAGE="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1696518308/Croma%20Assets/Communication/Cables%20and%20Connectors/Images/236195_0_m9jkzt.png" WHERE PRODUCT_ID=38;
+
+
+ UPDATE Products set IMAGE="https://eu.ugreen.com/cdn/shop/products/ugreen-usb-c-usb-c-charging-cable-100w-double-angle-plug-pd-30-qc-40-757297.png?v=1697187428" WHERE PRODUCT_ID=39;
+ UPDATE Products set IMAGE="https://png.pngtree.com/png-clipart/20211017/original/pngtree-mobile-phone-charger-stereo-black-png-image_6855506.png" WHERE PRODUCT_ID=40;
+
+
+UPDATE Products set IMAGE="https://png.pngtree.com/png-vector/20240625/ourmid/pngtree-usb-charger-3d-pic-png-image_12843887.png" WHERE PRODUCT_ID=41;
+
+
+ UPDATE Products set IMAGE="https://www.mtech.am/assets/images/75/75d90d_ugreen-usb-c-to-ethernet-adapter-642856.png" WHERE PRODUCT_ID=42;
+ 
+ UPDATE Products set IMAGE="https://cdn.shoplightspeed.com/shops/645668/files/53880946/image.jpg" WHERE PRODUCT_ID=43;
+ 
+ UPDATE Products set IMAGE="https://m.media-amazon.com/images/I/7192eSVBsGL.jpg" WHERE PRODUCT_ID=44;
+ 
+  UPDATE Products set IMAGE="https://images-cdn.ubuy.co.in/63c6eaf5c41ea11c75185a93-jetech-screen-protector-for-iphone-11.jpg" WHERE PRODUCT_ID=45;
+  
+  UPDATE Products set IMAGE="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/apple-pencil-pro-splitter-202405_FMT_WHH?wid=448&hei=800&fmt=png-alpha&.v=1713420587746" WHERE PRODUCT_ID=46;
+
+    UPDATE Products set IMAGE="https://cdn-media.wacom.com/-/media/images/carousels/homepage-a-slots/2020/2020-image-redux/bamboo-ink-plus-m-mobile.jpg?h=450&iar=0&w=726&rev=ebc21d9c2acd4d1fa53e3f6e9620f8f9&hash=8F3844FC87BE8FF37222FB6D4D709F52" WHERE PRODUCT_ID=47;
+
+    UPDATE Products set IMAGE="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU5fdqa-fiTUl7eW5DOBaiaFirPIfd2Rky7g&s" WHERE PRODUCT_ID=48;
+    
+        UPDATE Products set IMAGE="https://www.pngplay.com/wp-content/uploads/9/Apple-Watch-Transparent-Free-PNG.png" WHERE PRODUCT_ID=49;
+        
+           UPDATE Products set IMAGE="https://images.samsung.com/is/image/samsung/p6pim/in/2208/gallery/in-galaxy-watch5-40mm-sm-r900nzsainu-533186491?$650_519_PNG$" WHERE PRODUCT_ID=50;
+           
+	UPDATE Products set IMAGE="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJnu4fJI5COWXCfVGHW4njOGJfTm1VLXUy_w&s" WHERE PRODUCT_ID=51;          
+           
+                   UPDATE Products set IMAGE="https://www.fitbit.com/global/content/dam/fitbit/global/pdp/devices/charge-5/hero-static/charge5-black-device-3qtr.png" WHERE PRODUCT_ID=52;
+                   
+				UPDATE Products set IMAGE="https://ph.garmin.com/m/ph/g/products/vivosmart4-black-iamge-01.png" WHERE PRODUCT_ID=53;    
+                
+                	UPDATE Products set IMAGE="https://png.pngtree.com/png-vector/20240802/ourmid/pngtree-xiaomi-mi-smart-band-png-image_13320417.png" WHERE PRODUCT_ID=54;    
+                    
+                    	UPDATE Products set IMAGE="https://i.pcmag.com/imagery/articles/02hgFllAGyzcSi6NOuOkI9c-1.fit_lim.size_1938x1092.v_1569470686.jpg" WHERE PRODUCT_ID=55;    
+                        
+			UPDATE Products set IMAGE="https://www.vuzix.com/cdn/shop/products/Blade-ALpng-LowLQuarter_f56be174-947e-4daf-9eb4-e13a55094595.png?v=1687370745" WHERE PRODUCT_ID=56;
+            
+            UPDATE Products set IMAGE="https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/wearables/bose_frames_tempo/product_silo_images/tempo_product_page_ec_hero_1200x1022.png/jcr:content/renditions/cq5dam.web.1920.1920.png" WHERE PRODUCT_ID=57;
+            
+            UPDATE Products set IMAGE="https://png.pngtree.com/png-clipart/20230508/original/pngtree-airpods-png-image_9149137.png" WHERE PRODUCT_ID=58;
+            
+            UPDATE Products set IMAGE="https://atlas-content-cdn.pixelsquid.com/stock-images/samsung-galaxy-buds-live-earphones-koaqx33-600.jpg" WHERE PRODUCT_ID=59;
+            
+            UPDATE Products set IMAGE="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1718788316/Croma%20Assets/Entertainment/Wireless%20Earbuds/Images/301580_0_eu3o0d.png?tr=w-600" WHERE PRODUCT_ID=60;
+            
+            UPDATE Products set IMAGE="https://media.croma.com/image/upload/v1675867689/Croma%20Assets/Entertainment/Speakers%20and%20Media%20Players/Images/230161_0_arf7hi.png" WHERE PRODUCT_ID=61;
+            
+            UPDATE Products set IMAGE="https://lh3.googleusercontent.com/Eg_xq-CBLO2X7br8h7Beuk8mQ0C2PfiPSKrBxfWpbdBwAvlWFWnN_IApunu881OVRnDg=w250" WHERE PRODUCT_ID=62;
+            
+            UPDATE Products set IMAGE="https://www.pngitem.com/pimgs/m/412-4120713_ring-video-doorbell-png-transparent-png.png" WHERE PRODUCT_ID=63;
+            
+            UPDATE Products set IMAGE="https://www.homemedialimited.co.uk/wp-content/uploads/2019/01/one-feature-blk.png" WHERE PRODUCT_ID=64;
+            
+            UPDATE Products set IMAGE="https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/general/Datacapture/bose_soundbar_700_black_EC_hero.psd/_jcr_content/renditions/cq5dam.web.320.320.png" WHERE PRODUCT_ID=65;
+            
+            UPDATE Products set IMAGE="https://avshack.in/cdn/shop/products/411820_2_a4cd_jpg.png?v=1645615544&width=1214" WHERE PRODUCT_ID=66;
+            
+            UPDATE Products set IMAGE="https://images.samsung.com/is/image/samsung/p6pim/in/rs7fcg8113slhl/gallery/in-side-by-side-family-hub-rs7fcg8113slhl-535086472?$650_519_PNG$" WHERE PRODUCT_ID=67;
+            
+            UPDATE Products set IMAGE="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdRHvQ9fupA7LTb8amdUqhTD5IBpCQcgmzdA&s" WHERE PRODUCT_ID=68;
+            
+            UPDATE Products set IMAGE="https://images.keurig.com/is/image/keurig/K-Elite-Single-Serve-Coffee-Maker_5000359832?fmt=png-alpha" WHERE PRODUCT_ID=69;
+            
+            UPDATE Products set IMAGE="https://atlas-content-cdn.pixelsquid.com/stock-images/ring-video-doorbell-XllBq82-600.jpg" WHERE PRODUCT_ID=70;
+            
+            UPDATE Products set IMAGE="https://www.arlo.com/dw/image/v2/BDFZ_PRD/on/demandware.static/-/Sites-master-catalog-arlo/default/dwbdbaf08b/Products/HiRes%20Images/Go/2023/04%20-%20GO%202%20LTE%20-%20Wireless%20Camera.png?sw=375&sh=323&sm=fit" WHERE PRODUCT_ID=71;
+            
+            UPDATE Products set IMAGE="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfe9uAUCjCJ9gY7puGM9z-ZAJ-lEnXq_YQeQ&s" WHERE PRODUCT_ID=72;
+            
+            UPDATE Products set IMAGE="https://www.security.org/app/uploads/2019/07/SimpliSafe-Home-Security-System.png" WHERE PRODUCT_ID=73;
+
+UPDATE SALES
+SET SalesDate = DATE_ADD(SalesDate, INTERVAL 1 YEAR)
+WHERE YEAR(SalesDate) = 2023;
+-- CUSTOMERSALESOVERVIEW
+CREATE VIEW CustomerSalesOverview AS
+SELECT 
+    C.Customer_ID,
+    C.FirstName,
+    C.LastName,
+    C.Email,
+    C.House_Number,
+    C.Street_Name,
+    C.City,
+    C.Pincode,
+    COUNT(S.SalesID) AS NumberOfSales,
+    SUM(S.SalesAmount) AS TotalSpent,
+    MAX(S.SalesDate) AS LastPurchaseDate
+FROM 
+    CUSTOMERS C
+LEFT JOIN 
+    SALES S ON C.Customer_ID = S.CustomerID
+GROUP BY 
+    C.Customer_ID;
+
+
+-- Stored Procedure for Customer Report Generation
+DELIMITER $$
+
+CREATE PROCEDURE GenerateCustomerReport(
+    IN reportType VARCHAR(50)  -- Removed customer_ID parameter as it's no longer needed
+)
+BEGIN
+    CASE reportType
+        -- Customer Demographic Report
+        WHEN 'CustomerDemographic' THEN
+            SELECT City, COUNT(Customer_ID) AS NumberOfCustomers
+            FROM CustomerSalesOverview
+            GROUP BY City
+            ORDER BY NumberOfCustomers DESC
+            LIMIT 10;
+
+        -- Top Customers by Amount
+        WHEN 'TopCustomersByAmount' THEN
+            SELECT FirstName, LastName, Email, TotalSpent
+            FROM CustomerSalesOverview
+            ORDER BY TotalSpent DESC
+            LIMIT 10;
+
+        -- Frequent Customers by Sales
+        WHEN 'FrequentCustomers' THEN
+            SELECT FirstName, LastName, Email, NumberOfSales
+            FROM CustomerSalesOverview
+            ORDER BY NumberOfSales DESC
+            LIMIT 10;
+
+        -- All Customers Report
+        WHEN 'AllCustomers' THEN
+            SELECT FirstName, LastName, Email, House_Number, Street_Name , City , Pincode
+            FROM CustomerSalesOverview;
+
+        -- Inactive Customers Report
+        WHEN 'InactiveCustomers' THEN
+            SELECT FirstName,LastName,Email
+            FROM CustomerSalesOverview
+            WHERE LastPurchaseDate < DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH) 
+             OR LastPurchaseDate IS NULL;
+
+        ELSE
+            SELECT 'Invalid report type.' AS ErrorMessage;
+    END CASE;
+END $$
+
+DELIMITER ;
+
+
+-- StoredProcedure For Product Report Generation
+DELIMITER $$
+
+CREATE PROCEDURE GetProductReports(
+    IN reportType VARCHAR(50),
+    IN startDate DATE,
+    IN endDate DATE
+)
+BEGIN
+    CASE reportType
+        -- All Products (Ignore Date)
+        WHEN 'AllProducts' THEN
+            SELECT p.Product_ID, p.Product_Name, p.Price
+            FROM PRODUCTS p;
+
+        -- Top Selling Products (With Date Filter)
+        WHEN 'TopSelling' THEN
+            SELECT p.Product_ID, p.Product_Name, SUM(ps.Quantity) AS TotalSold
+            FROM PRODUCTS p
+            JOIN PRODUCT_SALES ps ON p.Product_ID = ps.Product_ID
+            WHERE ps.Sales_ID IN (SELECT SalesID FROM SALES WHERE SalesDate BETWEEN startDate AND endDate)
+            GROUP BY p.Product_ID
+            ORDER BY TotalSold DESC
+            LIMIT 10;  -- Adjust the limit as necessary
+
+        -- Worst Selling Products (With Date Filter)
+        WHEN 'WorstSelling' THEN
+            SELECT p.Product_ID, p.Product_Name, IFNULL(SUM(ps.Quantity), 0) AS TotalSold
+            FROM PRODUCTS p
+            LEFT JOIN PRODUCT_SALES ps ON p.Product_ID = ps.Product_ID
+            LEFT JOIN SALES s ON ps.Sales_ID = s.SalesID AND s.SalesDate BETWEEN startDate AND endDate
+            GROUP BY p.Product_ID
+            ORDER BY TotalSold ASC
+            LIMIT 10;
+
+        -- Products with Best Reviews (Ignore Date)
+        WHEN 'BestReviews' THEN
+            SELECT p.Product_ID, p.Product_Name, IFNULL(AVG(r.Rating), 0) AS AverageRating
+            FROM PRODUCTS p
+            JOIN REVIEW r ON p.Product_ID = r.ProductID
+            GROUP BY p.Product_ID
+            ORDER BY AverageRating DESC
+            LIMIT 10;  -- Adjust the limit as necessary
+
+        -- Products with Worst Reviews (Ignore Date)
+        WHEN 'WorstReviews' THEN
+            SELECT p.Product_ID, p.Product_Name, IFNULL(AVG(r.Rating), 0) AS AverageRating
+            FROM PRODUCTS p
+            JOIN REVIEW r ON p.Product_ID = r.ProductID
+            GROUP BY p.Product_ID
+            ORDER BY AverageRating ASC
+            LIMIT 10;  -- Adjust the limit as necessary
+
+        ELSE
+            SELECT 'Invalid report type' AS ErrorMessage;
+    END CASE;
+END $$
+
+DELIMITER ;
+-- Trigger For Deleting Sales
+DELIMITER //
+
+CREATE TRIGGER delete_related_product_sales
+AFTER DELETE ON Sales
+FOR EACH ROW
+BEGIN
+    DELETE FROM Product_Sales WHERE sales_id = OLD.salesid;
+END //
+
+DELIMITER ;
+
+-- View For CategoryReports
+CREATE VIEW ProductSalesWithCategories AS
+SELECT
+    s.SalesID,
+    s.CustomerID,
+    s.SalesAmount,
+    s.SalesDate,
+    ps.Product_ID,
+    ps.Quantity,
+    ps.UnitPrice,
+    (ps.Quantity * ps.UnitPrice) AS TotalSaleAmount,
+    c.Category_Name AS SubCategory,
+    c.Super_Category AS MainCategory
+FROM
+    SALES s
+JOIN
+    PRODUCT_SALES ps ON s.SalesID = ps.Sales_ID
+JOIN
+    PRODUCTS p ON ps.Product_ID = p.Product_ID
+JOIN
+    PRODUCT_CATEGORY pc ON p.Product_ID = pc.Product_ID
+JOIN
+    CATEGORY c ON pc.Category_ID = c.Category_ID;
+
+
+-- StoredProcedure For Categories
+DELIMITER //
+
+CREATE PROCEDURE GetCategoryReports(
+    IN reportType VARCHAR(50),
+    IN startDate DATE,
+    IN endDate DATE
+)
+BEGIN
+
+    -- Query for All Categories
+    IF reportType = 'AllCategories' THEN
+        SELECT DISTINCT 
+            c.Super_Category AS Category
+        FROM 
+            CATEGORY c;
+
+    -- Query for All Subcategories
+    ELSEIF reportType = 'AllSubcategories' THEN
+        SELECT 
+            c.Category_Name AS SubCategory
+        FROM 
+            CATEGORY c;
+
+    -- Query for Top-Selling Categories (Main Categories) with date filtering
+    ELSEIF reportType = 'TopSellingCategories' THEN
+        SELECT
+            MainCategory,
+            SUM(TotalSaleAmount) AS TotalSales
+        FROM
+            ProductSalesWithCategories
+        WHERE
+            SalesDate BETWEEN startDate AND endDate
+        GROUP BY
+            MainCategory
+        ORDER BY
+            TotalSales DESC
+        LIMIT 10;  -- Adjust limit as needed
+
+    -- Query for Top-Selling Subcategories with date filtering
+    ELSEIF reportType = 'TopSellingSubcategories' THEN
+        SELECT
+            SubCategory AS CATEGORY,
+            SUM(TotalSaleAmount) AS TotalSales
+        FROM
+            ProductSalesWithCategories
+        WHERE
+            SalesDate BETWEEN startDate AND endDate
+        GROUP BY
+            MainCategory, SubCategory
+        ORDER BY
+            TotalSales DESC
+        LIMIT 10;  -- Adjust limit as needed
+
+    ELSE
+        SELECT 'Invalid report type' AS ErrorMessage;
+    END IF;
+END //
+
+DELIMITER ;
+
+-- StoredProcedure for SalesReportGeneration
+DELIMITER //
+
+CREATE PROCEDURE GetSalesReports(
+    IN reportType VARCHAR(50),
+    IN startDate DATE,
+    IN endDate DATE
+)
+BEGIN
+    IF reportType = 'AllSales' THEN
+        SELECT *
+        FROM Sales
+        WHERE SalesDate BETWEEN startDate AND endDate;
+
+    ELSEIF reportType = 'DemographicSales' THEN
+        SELECT
+            c.City,
+            COUNT(s.SalesID) AS NumberOfSales,
+            SUM(s.SalesAmount) AS TotalSalesAmount
+        FROM Sales s
+        JOIN Customers c ON s.CustomerID = c.Customer_ID
+        WHERE s.SalesDate BETWEEN startDate AND endDate
+        GROUP BY c.City
+        ORDER BY NumberOfSales DESC;
+
+    ELSEIF reportType = 'BestSales' THEN
+        SELECT *
+        FROM Sales
+        WHERE SalesDate BETWEEN startDate AND endDate
+        ORDER BY SalesAmount DESC
+        LIMIT 10;
+
+    ELSEIF reportType = 'SalesByPaymentMethod' THEN
+        SELECT
+            PaymentMethod,
+            COUNT(SalesID) AS NumberOfSales,
+            SUM(SalesAmount) AS TotalSalesAmount
+        FROM Sales
+        WHERE SalesDate BETWEEN startDate AND endDate
+        GROUP BY PaymentMethod;
+
+    ELSEIF reportType = 'SalesSummary' THEN
+        SELECT
+            COUNT(SalesID) AS TotalTransactions,
+            SUM(SalesAmount) AS TotalSalesAmount,
+            AVG(SalesAmount) AS AverageAmountPerTransaction
+        FROM Sales
+        WHERE SalesDate BETWEEN startDate AND endDate;
+
+    ELSE
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Invalid report type specified.';
+    END IF;
 END //
 
 DELIMITER ;

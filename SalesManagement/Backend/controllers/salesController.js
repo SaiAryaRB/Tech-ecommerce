@@ -26,7 +26,7 @@ const xyz = async (req, res) => {
           SUM(PS.Quantity) AS itemsSold
         FROM SALES S
         LEFT JOIN PRODUCT_SALES PS ON S.SalesID = PS.Sales_ID
-        WHERE YEAR(S.SalesDate) = 2023 AND MONTH(S.SalesDate) = 10;
+        WHERE YEAR(S.SalesDate) = 2024 AND MONTH(S.SalesDate) = 10;
       `, (err, summaryStats) => {
         if (err) {
           console.error('Error fetching summary stats:', err);

@@ -4,7 +4,7 @@ import './InventoryManagement.css'; // Import your CSS file
 const InventoryManagement = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]); // State for categories
-  const [newProduct, setNewProduct] = useState({ name: '', quantity: '', price: '', superCategory: '', category: '' });
+  const [newProduct, setNewProduct] = useState({ name: '', quantity: '', price: '', superCategory: '', category: '', image: '' });
   const [updateProduct, setUpdateProduct] = useState({ id: '', name: '', quantity: '', price: '' });
   const [deleteProductInput, setDeleteProductInput] = useState({ id: '', name: '' });
   const [isUpdatePopupOpen, setUpdatePopupOpen] = useState(false); // State for controlling the popup
@@ -50,7 +50,7 @@ const InventoryManagement = () => {
   };
 
   const handleAddProduct = async () => {
-    if (!newProduct.name || !newProduct.quantity || !newProduct.price || !newProduct.superCategory || !newProduct.category) {
+    if (!newProduct.name || !newProduct.quantity || !newProduct.price || !newProduct.superCategory || !newProduct.category || !newProduct.image) {
       alert('Please fill in all fields');
       return;
     }
@@ -61,6 +61,7 @@ const InventoryManagement = () => {
       Stock_Level: newProduct.quantity,
       Super_Category: newProduct.superCategory,
       Category_Name: newProduct.category, // Use Category_Name instead of Sub_Category
+      Image: newProduct.image, // Include image link
     };
 
     console.log(newProductData)
@@ -74,7 +75,7 @@ const InventoryManagement = () => {
         body: JSON.stringify(newProductData), // Send the new product data
       });
       fetchProducts(); // Refresh product list
-      setNewProduct({ name: '', quantity: '', price: '', superCategory: '', category: '' }); // Reset input fields
+      setNewProduct({ name: '', quantity: '', price: '', superCategory: '', category: '', image: '' }); // Reset input fields
     } catch (error) {
       console.error('Error adding product:', error);
     }
@@ -162,6 +163,12 @@ const InventoryManagement = () => {
           value={newProduct.price}
           onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
         />
+        <input
+          type="text"
+          placeholder="Image Link" // New input for image link
+          value={newProduct.image}
+          onChange={(e) => setNewProduct({ ...newProduct, image: e.target.value })}
+        />
         <select
           value={newProduct.superCategory}
           onChange={(e) => setNewProduct({ ...newProduct, superCategory: e.target.value, category: '' })} // Reset category when super category changes
@@ -228,13 +235,13 @@ const InventoryManagement = () => {
         <h3>Delete Product</h3>
         <input
           type="text"
-          placeholder="Product ID"
+          placeholder="Product ID (optional)"
           value={deleteProductInput.id}
           onChange={(e) => setDeleteProductInput({ ...deleteProductInput, id: e.target.value })}
         />
         <input
           type="text"
-          placeholder="Product Name"
+          placeholder="Product Name (optional)"
           value={deleteProductInput.name}
           onChange={(e) => setDeleteProductInput({ ...deleteProductInput, name: e.target.value })}
         />
@@ -246,7 +253,7 @@ const InventoryManagement = () => {
         <ul>
           {products.map(product => (
             <li key={product.Product_ID}>
-            {product.Product_ID} - {product.Product_Name} - Quantity: {product.Stock_Level}, Price: {product.Price}
+              {product.Product_Name} - Quantity: {product.Stock_Level} - Price: ${product.Price} - <img src={product.Image} alt={product.Product_Name} width={50} />
             </li>
           ))}
         </ul>

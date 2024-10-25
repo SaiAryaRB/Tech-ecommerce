@@ -25,17 +25,17 @@ const getInventory = (req, res) => {
 const addNewProduct = (req, res) => {
   console.log('Request Body in addNewProduct:', req.body);
 
-  const { Product_Name, Price, Stock_Level, Super_Category, Category_Name } = req.body;
+  const { Product_Name, Stock_Level, Price, Super_Category, Category_Name, Image } = req.body; // Include Image
   const stockLevel = parseInt(Stock_Level, 10);
 
-  if (!Product_Name || !Price || isNaN(stockLevel) || !Super_Category || !Category_Name) {
+  if (!Product_Name || !Price || isNaN(stockLevel) || !Super_Category || !Category_Name || !Image) { // Check for Image
       return res.status(400).json({ message: 'All fields are required.' });
   }
 
   // Call the stored procedure to add the product, inventory, and categories
-  const sql = 'CALL AddProductWithCategory(?, ?, ?, ?, ?)';
+  const sql = 'CALL AddProductWithCategory(?, ?, ?, ?, ?, ?)'; // Update to include Image
 
-  db.query(sql, [Product_Name, Price, stockLevel, Super_Category, Category_Name], (err, result) => {
+  db.query(sql, [Product_Name, stockLevel, Price, Super_Category, Category_Name, Image], (err, result) => {
       if (err) {
           console.error('Error executing stored procedure:', err);
           return res.status(500).json({ message: 'Internal server error' });
@@ -43,6 +43,7 @@ const addNewProduct = (req, res) => {
       res.status(200).json({ message: 'Product, inventory, and category added successfully.' });
   });
 };
+
 
   
 const updateProduct = (req, res) => {
