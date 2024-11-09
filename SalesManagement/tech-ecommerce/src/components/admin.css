@@ -1,95 +1,150 @@
+/* Admin Dashboard Styling */
 .admin-dashboard {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .welcome-section {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .dashboard-content {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .stats-section, .management-options {
-    width: 48%;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-  }
-  
-  .chart-section {
-    margin-top: 20px;
-  }
-  
-  .management-options ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .management-options ul li {
-    margin: 15px 0;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .management-options ul li svg {
-    margin-right: 10px;
-    color: #007bff;
-  }
-  
-  .management-options a {
-    color: #007bff;
-    font-weight: bold;
-  }
-  
-  .management-options a:hover {
-    text-decoration: underline;
-  }
-  
-  .toggle-title {
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-  }
-  
-  .sub-options {
-    margin-top: 10px;
-    margin-left: 20px;
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .sub-options li {
-    margin: 8px 0;
-    cursor: pointer;
-  }
-  
-  .sub-options li:hover {
-    text-decoration: underline;
-  }
-  
-  h1, h2 {
-    color: #333;
-  }
-  
-  ul {
-    padding-left: 0;
-  }
-  
-  button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background: url('D:/H/GitHub/Tech-ecommerce/SalesManagement/tech-ecommerce/public/admin_gradiant.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  height: 100vh
+}
+
+/* Logout Button Styling */
+.logout-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.logout-button button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-button button:hover {
+  background-color: #3a0cae;
+}
+
+/* Welcome Section Styling */
+.welcome-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Dashboard Content Styling */
+.dashboard-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Statistics and Management Options Styling */
+.stats-section, .manoptions {
+  width: 48%;
+  padding: 1%;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  max-height: 25%;
+  align-items: center;
+}
+
+/* Chart Section Styling */
+.chart-section {
+  margin-top: 20px;
+}
+
+/* Management Options Styling */
+.manoptions ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.manoptions ul li {
+  margin: 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manoptions ul li svg {
+  margin-right: 10px;
+  color: #007bff;
+}
+
+/* Adjust the link styling to keep text on a single line */
+.manoptions a {
+  color: #007bff;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap; /* Prevent line break */
+}
+
+.manoptions a:hover {
+  text-decoration: none;
+}
+
+/* Animation Container Styling */
+.animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px; /* Adjust as necessary for the animation */
+  margin-top: 10px;
+}
+
+/* Toggle Title Styling */
+.toggle-title {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+/* Sub-options Styling */
+.sub-options {
+  margin-top: 10px;
+  margin-left: 20px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.sub-options li {
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.sub-options li:hover {
+  text-decoration: none;
+}
+
+/* Headings Styling */
+h1, h2 {
+  color: #fff;
+}
+
+/* General Styling for Lists and Buttons */
+ul {
+  padding-left: 0;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3a0cae;
+}

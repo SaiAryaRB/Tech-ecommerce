@@ -7,19 +7,23 @@ const getInventory = (req, res) => {
       Inventory.Product_ID, 
       Products.Product_Name, 
       Products.Price,  -- Include Price from Products table
-      Inventory.Stock_Level 
+      Inventory.Stock_Level,
+      Category.Super_Category AS Category,  -- Super_Category as Category
+      Category.Category_Name AS Subcategory  -- Category_Name as Subcategory
     FROM Inventory 
-    JOIN Products ON Inventory.Product_ID = Products.Product_ID`;
+    JOIN Products ON Inventory.Product_ID = Products.Product_ID
+    JOIN PRODUCT_CATEGORY ON Products.Product_ID = PRODUCT_CATEGORY.Product_ID
+    JOIN Category ON PRODUCT_CATEGORY.Category_ID = Category.Category_ID;
+  `;
 
   db.query(query, (err, results) => {
     if (err) {
       console.error('Database error:', err);
       return res.status(500).json({ message: 'Internal server error' });
     }
-    res.json(results); // This will now include Inventory_ID, Product_ID, Product_Name, Price, and Stock_Level
+    res.json(results); // This will include Inventory_ID, Product_ID, Product_Name, Price, Stock_Level, Category, and Subcategory
   });
 };
-
 
 
 const addNewProduct = (req, res) => {

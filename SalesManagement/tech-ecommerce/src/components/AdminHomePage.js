@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link } from 'react-router-dom';
 import './admin.css';
 import { Line } from 'react-chartjs-2';
 import { FaBoxOpen, FaFileAlt } from 'react-icons/fa';
-import axios from 'axios'; // Import Axios
+import axios from 'axios';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import Lottie from 'react-lottie';
+import inventoryAnimation from 'D:/H/GitHub/Tech-ecommerce/SalesManagement/tech-ecommerce/src/animations/Inventory Management Animation.json';
+import reportAnimation from 'D:/H/GitHub/Tech-ecommerce/SalesManagement/tech-ecommerce/src/animations/Report Generation Animation.json';
 
 // Register necessary components for the chart
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -43,8 +46,35 @@ const AdminHomePage = () => {
     ],
   };
 
+  // Logout function
+  const handleLogout = () => {
+    alert('Logged out');
+    // Implement logout functionality as needed, e.g., redirecting to login page
+  };
+
+  // Animation options for Inventory Management
+  const inventoryOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: inventoryAnimation,
+    rendererSettings: { preserveAspectRatio: 'xMidYMid slice' },
+  };
+
+  // Animation options for Report Generation
+  const reportOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: reportAnimation,
+    rendererSettings: { preserveAspectRatio: 'xMidYMid slice' },
+  };
+
   return (
     <div className="admin-dashboard">
+      {/* Logout button */}
+      <div className="logout-button">
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+
       <div className="welcome-section">
         <h1>Welcome, {adminName}!</h1>
         <p>Here are this month's stats and management options.</p>
@@ -72,31 +102,25 @@ const AdminHomePage = () => {
         </div>
 
         {/* Management Options Section */}
-        <div className="management-options">
+        <div className="manoptions">
           <h2>Management Options</h2>
           <ul>
             <li>
               <Link to="/admin/inventory" className="management-option">
+                {/* Lottie Animation for Inventory Management */}
+                <Lottie options={inventoryOptions} height={200} width={200} />
                 <FaBoxOpen />
                 <span className="option-title">Inventory Management</span>
               </Link>
-              <ul className="sub-options">
-                <li>Update Stock</li>
-                <li>View Inventory</li>
-                <li>Low Stock Alerts</li>
-              </ul>
             </li>
 
             <li>
               <Link to="/admin/report" className="management-option">
+                {/* Lottie Animation for Report Generation */}
+                <Lottie options={reportOptions} height={200} width={200} />
                 <FaFileAlt />
                 <span className="option-title">Report Generation</span>
               </Link>
-              <ul className="sub-options">
-                <li>Generate Sales Report</li>
-                <li>Inventory Report</li>
-                <li>Customer Activity</li>
-              </ul>
             </li>
           </ul>
         </div>
